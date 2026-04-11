@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  gestipro-landing:
+    build: .
+    container_name: gestipro-landing
+    ports:
+      - "8080:80"
+    restart: unless-stopped

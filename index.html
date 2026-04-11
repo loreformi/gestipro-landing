@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GestiPro — Gestionale per Artigiani e PMI | Ore, Materiali, Fatture in 3 Click</title>
+  <meta name="description" content="GestiPro è il gestionale cloud italiano per artigiani, tecnici e piccole imprese. Traccia ore di lavoro, materiali e genera fatture PDF professionali in pochi secondi. Gratis per iniziare." />
+  <meta name="keywords" content="gestionale artigiani, app ore lavoro, fatture PDF artigiani, gestionale freelance, software PMI italiano, tracciamento ore elettricista, preventivi automatici" />
+  <meta name="author" content="GestiPro" />
+  <meta property="og:title" content="GestiPro — Dalla prima ora alla fattura in 3 click" />
+  <meta property="og:description" content="Il gestionale cloud italiano per artigiani e PMI. Clienti, ore, materiali e fatture PDF — tutto in un unico posto, senza complessità." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://gestipro-landing.vercel.app/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GestiPro",
+    "operatingSystem": "Web, iOS, Android",
+    "applicationCategory": "BusinessApplication",
+    "offers": [
+      {"@type": "Offer", "price": "0", "priceCurrency": "EUR", "name": "Free"},
+      {"@type": "Offer", "price": "12", "priceCurrency": "EUR", "name": "Solo"},
+      {"@type": "Offer", "price": "35", "priceCurrency": "EUR", "name": "Team"}
+    ],
+    "description": "Gestionale cloud italiano per artigiani, freelance e PMI.",
+    "url": "https://gestipro-landing.vercel.app"
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:    #1e40af;
+      --blue-l:  #3b82f6;
+      --cyan:    #06b6d4;
+      --dark:    #0f172a;
+      --dark2:   #1e293b;
+      --dark3:   #334155;
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
+      --white:   #ffffff;
+      --grad: linear-gradient(135deg, #1e40af 0%, #06b6d4 100%);
+      --grad2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      --radius: 14px;
+      --shadow: 0 4px 32px rgba(6,182,212,.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(15,23,42,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(59,130,246,.15);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; }
+    .logo-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 2rem; font-size: .92rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      padding: .5rem 1.3rem; border-radius: 8px;
+      background: var(--grad);
+      color: #fff; font-weight: 700; font-size: .92rem;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .88; }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 5vw 4rem;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 20%, rgba(59,130,246,.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 80% 70%, rgba(6,182,212,.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: .35rem .9rem; border-radius: 50px;
+      border: 1px solid rgba(6,182,212,.4);
+      background: rgba(6,182,212,.08);
+      font-size: .8rem; font-weight: 600; color: var(--cyan);
+      margin-bottom: 1.6rem; letter-spacing: .4px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900; line-height: 1.12;
+      letter-spacing: -1.5px;
+      max-width: 840px;
+    }
+    .hero h1 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub {
+      margin-top: 1.4rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 600px;
+    }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2.4rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      padding: .85rem 2rem; border-radius: 10px;
+      background: var(--grad);
+      color: #fff; font-weight: 700; font-size: 1rem;
+      box-shadow: 0 8px 32px rgba(59,130,246,.35);
+      transition: transform .2s, box-shadow .2s;
+      border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(59,130,246,.5); }
+    .btn-ghost {
+      padding: .85rem 2rem; border-radius: 10px;
+      border: 1px solid rgba(148,163,184,.3);
+      color: var(--text); font-weight: 600; font-size: 1rem;
+      background: transparent; cursor: pointer;
+      transition: border-color .2s, background .2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: var(--cyan); background: rgba(6,182,212,.06); }
+    .hero-note { margin-top: 1rem; font-size: .82rem; color: var(--muted); }
+
+    .stats {
+      display: flex; gap: 2px; flex-wrap: wrap; justify-content: center;
+      padding: 2.5rem 5vw;
+      background: var(--dark2);
+      border-top: 1px solid rgba(59,130,246,.1);
+      border-bottom: 1px solid rgba(59,130,246,.1);
+    }
+    .stat {
+      flex: 1; min-width: 150px;
+      text-align: center; padding: 1.2rem 1rem;
+    }
+    .stat strong { display: block; font-size: 2rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat span { font-size: .82rem; color: var(--muted); }
+
+    section { padding: 5rem 5vw; }
+    .section-label {
+      display: inline-block; font-size: .75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--cyan);
+      margin-bottom: .8rem;
+    }
+    .section-title { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.5px; }
+    .section-title em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-sub { margin-top: .8rem; color: var(--muted); font-size: 1.05rem; max-width: 560px; }
+    .center { text-align: center; }
+    .center .section-sub { margin-inline: auto; }
+
+    .features-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 3rem;
+    }
+    .feature-card {
+      background: var(--dark2);
+      border: 1px solid rgba(59,130,246,.12);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .feature-card:hover { border-color: rgba(6,182,212,.4); transform: translateY(-4px); box-shadow: var(--shadow); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(59,130,246,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .45rem; }
+    .feature-card p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+    .steps { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 3rem; }
+    .step { flex: 1; min-width: 220px; display: flex; gap: 1rem; }
+    .step-num {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      background: var(--grad); display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; color: #fff;
+    }
+    .step-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
+    .step-body p { font-size: .88rem; color: var(--muted); }
+
+    .profiles-grid {
+      display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; justify-content: center;
+    }
+    .profile-chip {
+      padding: .6rem 1.2rem; border-radius: 50px;
+      border: 1px solid rgba(59,130,246,.2);
+      background: rgba(59,130,246,.06);
+      font-size: .9rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      transition: border-color .2s, background .2s;
+    }
+    .profile-chip:hover { border-color: var(--cyan); background: rgba(6,182,212,.1); }
+
+    .table-wrap { overflow-x: auto; margin-top: 2.5rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th { padding: 1rem 1.2rem; text-align: left; font-size: .8rem; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(59,130,246,.15); }
+    td { padding: .9rem 1.2rem; font-size: .9rem; border-bottom: 1px solid rgba(59,130,246,.07); }
+    tr:hover td { background: rgba(59,130,246,.04); }
+    .badge-green { background: rgba(34,197,94,.12); color: #4ade80; padding: .2rem .7rem; border-radius: 6px; font-size: .78rem; font-weight: 700; }
+    .badge-red { background: rgba(239,68,68,.12); color: #f87171; padding: .2rem .7rem; border-radius: 6px; font-size: .78rem; font-weight: .78rem; font-weight: 700; }
+    .highlight-row td { background: rgba(59,130,246,.07) !important; font-weight: 700; }
+
+    .pricing-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      margin-top: 3rem;
+    }
+    .price-card {
+      background: var(--dark2);
+      border: 1px solid rgba(59,130,246,.12);
+      border-radius: var(--radius); padding: 2rem;
+      position: relative; display: flex; flex-direction: column;
+      transition: border-color .25s, transform .25s;
+    }
+    .price-card.featured {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 1px rgba(6,182,212,.3), var(--shadow);
+      transform: scale(1.02);
+    }
+    .price-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--grad); color: #fff; font-size: .72rem; font-weight: 800;
+      padding: .28rem .9rem; border-radius: 50px; letter-spacing: .5px;
+    }
+    .price-plan { font-size: .8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); }
+    .price-amount { font-size: 2.8rem; font-weight: 900; letter-spacing: -1px; margin: .5rem 0 0; }
+    .price-amount sup { font-size: 1.1rem; vertical-align: top; margin-top: .6rem; display: inline-block; }
+    .price-amount sub { font-size: .9rem; color: var(--muted); }
+    .price-annual { font-size: .8rem; color: var(--cyan); margin-bottom: 1.2rem; }
+    .price-divider { border: none; border-top: 1px solid rgba(59,130,246,.12); margin: 1.2rem 0; }
+    .price-feature { display: flex; gap: .6rem; align-items: flex-start; font-size: .87rem; margin-bottom: .6rem; color: var(--muted); }
+    .price-feature svg { flex-shrink: 0; color: #4ade80; margin-top: 2px; }
+    .price-cta { margin-top: auto; padding-top: 1.5rem; }
+    .btn-price {
+      width: 100%; padding: .78rem; border-radius: 9px; font-weight: 700; font-size: .95rem;
+      cursor: pointer; border: none; transition: opacity .2s, transform .2s;
+    }
+    .btn-price-primary { background: var(--grad); color: #fff; }
+    .btn-price-ghost { background: transparent; border: 1px solid rgba(148,163,184,.25); color: var(--text); }
+    .btn-price:hover { opacity: .85; transform: translateY(-1px); }
+
+    .selfhosted-card {
+      background: var(--dark2);
+      border: 1px solid rgba(59,130,246,.15);
+      border-radius: var(--radius); padding: 2.5rem;
+      display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;
+      margin-top: 2.5rem;
+    }
+    .selfhosted-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: .5rem; }
+    .selfhosted-card p { color: var(--muted); font-size: .93rem; }
+    .selfhosted-prices { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .sh-price {
+      background: var(--dark3); border-radius: 10px; padding: 1rem 1.4rem;
+      text-align: center; min-width: 140px;
+    }
+    .sh-price strong { display: block; font-size: 1.5rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .sh-price span { font-size: .78rem; color: var(--muted); }
+
+    .testimonials-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 3rem;
+    }
+    .testimonial {
+      background: var(--dark2); border: 1px solid rgba(59,130,246,.1);
+      border-radius: var(--radius); padding: 1.8rem;
+    }
+    .testimonial p { font-size: .93rem; color: var(--text); line-height: 1.7; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: .8rem; margin-top: 1.2rem; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; color: #fff; flex-shrink: 0; }
+    .author-name { font-weight: 700; font-size: .88rem; }
+    .author-role { font-size: .78rem; color: var(--muted); }
+    .stars { color: #fbbf24; font-size: .85rem; margin-bottom: .5rem; }
+
+    .faq-list { max-width: 760px; margin: 2.5rem auto 0; }
+    details {
+      border: 1px solid rgba(59,130,246,.12); border-radius: 10px;
+      padding: 1.2rem 1.5rem; margin-bottom: .8rem;
+      background: var(--dark2);
+      cursor: pointer;
+    }
+    summary { font-weight: 700; font-size: .97rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::after { content: "+"; font-size: 1.3rem; color: var(--cyan); transition: transform .2s; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { margin-top: .8rem; font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    .cta-bottom {
+      text-align: center; padding: 6rem 5vw;
+      background: var(--dark2);
+      border-top: 1px solid rgba(59,130,246,.1);
+      position: relative; overflow: hidden;
+    }
+    .cta-bottom::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(6,182,212,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-bottom h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1px; }
+    .cta-bottom h2 em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-bottom p { color: var(--muted); font-size: 1.05rem; margin: 1rem auto; max-width: 500px; }
+    .cta-bottom .hero-actions { justify-content: center; }
+
+    footer {
+      background: var(--dark); border-top: 1px solid rgba(59,130,246,.08);
+      padding: 3rem 5vw;
+      display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;
+    }
+    .footer-logo { font-weight: 800; font-size: 1.1rem; }
+    .footer-logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .footer-links { display: flex; gap: 1.5rem; font-size: .85rem; color: var(--muted); flex-wrap: wrap; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: .78rem; color: var(--muted); text-align: right; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .price-card.featured { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <span>GestiPro</span>
+  </div>
+  <div class="nav-links">
+    <a href="#features">Funzionalità</a>
+    <a href="#come-funziona">Come funziona</a>
+    <a href="#prezzi">Prezzi</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a href="#prezzi" class="nav-cta">Prova Gratis →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">
+    🇮🇹 Fatto in Italia · In sviluppo attivo · Aprile 2026
+  </div>
+  <h1>Dalla prima ora di lavoro<br>alla <em>fattura in PDF</em><br>in tre click.</h1>
+  <p class="hero-sub">
+    GestiPro è il gestionale cloud pensato per artigiani, tecnici e PMI italiane.<br>
+    Clienti, ore, materiali e fatture — tutto in un unico posto. Senza complessità.
+  </p>
+  <div class="hero-actions">
+    <a href="#prezzi" class="btn-primary">⚡ Inizia Gratis</a>
+    <a href="#come-funziona" class="btn-ghost">▶ Come funziona</a>
+  </div>
+  <p class="hero-note">✓ Piano Free senza carta di credito &nbsp;·&nbsp; ✓ Setup in meno di 10 minuti &nbsp;·&nbsp; ✓ Dati tuoi, in Italia</p>
+</section>
+
+<div class="stats">
+  <div class="stat"><strong>1,5M+</strong><span>Partite IVA italiane target</span></div>
+  <div class="stat"><strong>3 click</strong><span>Per generare una fattura PDF</span></div>
+  <div class="stat"><strong>5</strong><span>Profili professionali integrati</span></div>
+  <div class="stat"><strong>100%</strong><span>GDPR compliant &amp; Self-Hosted</span></div>
+  <div class="stat"><strong>€0</strong><span>Per iniziare subito</span></div>
+</div>
+
+<section id="features">
+  <div class="center">
+    <span class="section-label">Funzionalità</span>
+    <h2 class="section-title">Tutto quello che ti serve.<br><em>Niente di quello che non ti serve.</em></h2>
+    <p class="section-sub">Smetti di perdere tempo con Excel, fogli carta e tool separati. GestiPro centralizza tutto.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-icon">👥</div><h3>Gestione Clienti Avanzata</h3><p>Anagrafica completa con P.IVA, telefono, indirizzo e note. Ricerca live, storico lavori per cliente, modifica inline in un secondo.</p></div>
+    <div class="feature-card"><div class="feature-icon">⏱️</div><h3>Tracciamento Ore di Lavoro</h3><p>Registra ore e descrizione per ogni intervento. Il totale si calcola automaticamente moltiplicando ore × tariffa oraria. Zero errori.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔩</div><h3>Gestione Materiali</h3><p>Inserisci materiali con quantità e costo unitario. L'importo totale è automatico. Tutto collegato al cliente giusto.</p></div>
+    <div class="feature-card"><div class="feature-icon">📄</div><h3>Fatture e Preventivi PDF</h3><p>Genera documenti professionali in un click: seleziona cliente, periodo, e GestiPro include automaticamente ore, materiali e calcola l'IVA al 22%.</p></div>
+    <div class="feature-card"><div class="feature-icon">📊</div><h3>Dashboard Analytics</h3><p>KPI mensili, trend fatturato, top clienti e ore lavorate. Grafici chiari per capire a colpo d'occhio come va il tuo business.</p></div>
+    <div class="feature-card"><div class="feature-icon">🔒</div><h3>Privacy &amp; Multi-Tenant</h3><p>Ogni account è isolato. Password hashate con bcrypt, sessioni httpOnly. Opzione Self-Hosted: i tuoi dati non escono mai dal tuo server.</p></div>
+    <div class="feature-card"><div class="feature-icon">🌙</div><h3>Tema Dark / Light</h3><p>Scegli il tema che preferisci. Lavora con comodità sia in ufficio che sul campo, anche su smartphone.</p></div>
+    <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI in arrivo — Q4 2026</h3><p>Preventivi generati con GPT-4o, chatbot assistente e OCR ricevute materiali. Il futuro del gestionale, già in roadmap.</p></div>
+  </div>
+</section>
+
+<section id="come-funziona" style="background: var(--dark2);">
+  <span class="section-label">Come funziona</span>
+  <h2 class="section-title">Operativo in <em>meno di 10 minuti</em>.</h2>
+  <p class="section-sub">Nessuna formazione, nessun manuale. Se usi uno smartphone, usi GestiPro.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Crea il tuo account</h3><p>Registrati con nome azienda ed email. Scegli il profilo (es. Elettricista) e imposta la tariffa oraria.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Aggiungi clienti e lavori</h3><p>Inserisci i clienti una volta sola. Per ogni intervento, registra ore e materiali. In 30 secondi.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Genera la fattura PDF</h3><p>Seleziona cliente e periodo: GestiPro costruisce il documento completo con IVA. Apri, scarica, invia.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Monitora il fatturato</h3><p>La dashboard aggrega tutto: fatturato mensile, ore totali, clienti più redditizi. Tieni il polso ogni giorno.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="center">
+    <span class="section-label">Profili Professionali</span>
+    <h2 class="section-title">Non un tool generico.<br><em>Il tuo gestionale.</em></h2>
+    <p class="section-sub">GestiPro si adatta alla tua categoria con terminologie e layout specifici per il tuo settore.</p>
+  </div>
+  <div class="profiles-grid">
+    <span class="profile-chip">⚡ Elettricista</span>
+    <span class="profile-chip">🔧 Idraulico / Impiantista</span>
+    <span class="profile-chip">☀️ Installatore Fotovoltaico</span>
+    <span class="profile-chip">💻 Tecnico Informatico</span>
+    <span class="profile-chip">🎥 Videomaker / Fotografo</span>
+    <span class="profile-chip">🌿 Giardiniere / Manutentore</span>
+    <span class="profile-chip">🏗️ Impresa Impiantistica</span>
+    <span class="profile-chip">📐 Studio Tecnico</span>
+  </div>
+</section>
+
+<section style="background: var(--dark2);">
+  <span class="section-label">Perché GestiPro</span>
+  <h2 class="section-title">Nessun altro fa <em>tutto insieme</em>.</h2>
+  <p class="section-sub">Confronta GestiPro con le alternative più usate dagli artigiani italiani.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Soluzione</th><th>Prezzo</th><th>Ore + Materiali</th><th>Fatture PDF</th><th>Cloud italiano</th><th>Self-Hosted</th></tr></thead>
+      <tbody>
+        <tr class="highlight-row"><td>⚡ <strong>GestiPro</strong></td><td>€0 – €59/mese</td><td><span class="badge-green">✓ Sì</span></td><td><span class="badge-green">✓ Sì</span></td><td><span class="badge-green">✓ Sì</span></td><td><span class="badge-green">✓ Sì</span></td></tr>
+        <tr><td>Fatture in Cloud</td><td>€8–25/mese</td><td><span class="badge-red">✗ No</span></td><td><span class="badge-green">✓ Sì</span></td><td><span class="badge-green">✓ Sì</span></td><td><span class="badge-red">✗ No</span></td></tr>
+        <tr><td>Danea Easyfatt</td><td>€69–199/anno</td><td><span class="badge-red">✗ Parziale</span></td><td><span class="badge-green">✓ Sì</span></td><td><span class="badge-red">✗ Solo Win</span></td><td><span class="badge-red">✗ No</span></td></tr>
+        <tr><td>Toggl + Wave</td><td>€9+/mese</td><td><span class="badge-red">✗ 2 tool sep.</span></td><td><span class="badge-red">✗ Parziale</span></td><td><span class="badge-red">✗ No</span></td><td><span class="badge-red">✗ No</span></td></tr>
+        <tr><td>Foglio Excel</td><td>€0</td><td><span class="badge-red">✗ Manuale</span></td><td><span class="badge-red">✗ No</span></td><td><span class="badge-red">✗ No</span></td><td><span class="badge-red">—</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="prezzi">
+  <div class="center">
+    <span class="section-label">Prezzi</span>
+    <h2 class="section-title">Semplice. Trasparente.<br><em>Senza sorprese.</em></h2>
+    <p class="section-sub">Inizia gratis, passa al piano pagato solo quando GestiPro ti ha già fatto risparmiare tempo.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-plan">Free</div>
+      <div class="price-amount"><sup>€</sup>0<sub>/mese</sub></div>
+      <p class="price-annual">Senza carta di credito</p>
+      <hr class="price-divider">
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1 utente</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Fino a 10 clienti</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>50 voci/mese</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>PDF con watermark</div>
+      <div class="price-cta"><button class="btn-price btn-price-ghost">Inizia Gratis →</button></div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">🔥 PIÙ SCELTO</div>
+      <div class="price-plan">Solo</div>
+      <div class="price-amount"><sup>€</sup>12<sub>/mese</sub></div>
+      <p class="price-annual">oppure <strong style="color:var(--cyan)">€99/anno</strong> — risparmi 31%</p>
+      <hr class="price-divider">
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>1 utente · Clienti illimitati</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Ore e materiali illimitati</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>PDF <strong>senza watermark</strong></div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Storico fatture con stati</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Export CSV per commercialista</div>
+      <div class="price-cta"><button class="btn-price btn-price-primary">Inizia con Solo →</button></div>
+    </div>
+    <div class="price-card">
+      <div class="price-plan">Team</div>
+      <div class="price-amount"><sup>€</sup>35<sub>/mese</sub></div>
+      <p class="price-annual">oppure <strong style="color:var(--cyan)">€299/anno</strong> · +€8/utente oltre il 3°</p>
+      <hr class="price-divider">
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Tutto il piano Solo</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Fino a 3 utenti inclusi</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Ruoli Admin / Dipendente / Contabile</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Dashboard aggregata team</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Portale cliente condivisibile</div>
+      <div class="price-cta"><button class="btn-price btn-price-ghost">Scegli Team →</button></div>
+    </div>
+    <div class="price-card">
+      <div class="price-plan" style="color:#a78bfa">Team AI 🤖</div>
+      <div class="price-amount"><sup>€</sup>59<sub>/mese</sub></div>
+      <p class="price-annual">oppure <strong style="color:#a78bfa">€499/anno</strong></p>
+      <hr class="price-divider">
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Tutto il piano Team</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Preventivi AI (GPT-4o)</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Chatbot assistente gestionale</div>
+      <div class="price-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>OCR ricevute materiali</div>
+      <div class="price-cta"><button class="btn-price btn-price-ghost" style="border-color:rgba(167,139,250,.3);color:#a78bfa">Scegli Team AI →</button></div>
+    </div>
+  </div>
+  <div class="selfhosted-card">
+    <div style="flex:1; min-width:240px">
+      <h3>🐳 Preferisci il Self-Hosted?</h3>
+      <p>Installa GestiPro sul tuo server Docker. Dati sempre sotto il tuo controllo, licenza perpetua, un anno di aggiornamenti incluso.</p>
+    </div>
+    <div class="selfhosted-prices">
+      <div class="sh-price"><strong>€249</strong><span>Self-Hosted Solo<br>1 installazione</span></div>
+      <div class="sh-price"><strong>€599</strong><span>Self-Hosted Team<br>Utenti illimitati</span></div>
+      <div class="sh-price"><strong>€1.499</strong><span>White-Label<br>Brand personalizzato</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--dark2);">
+  <div class="center">
+    <span class="section-label">Dicono di noi</span>
+    <h2 class="section-title">Artigiani come te <em>già lo usano</em>.</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial"><div class="stars">★★★★★</div><p>"Prima usavo Excel e mi perdevo 2 ore a fine mese a calcolare le fatture. Ora con GestiPro lo faccio in 10 minuti. Letteralmente."</p><div class="testimonial-author"><div class="avatar">ML</div><div><div class="author-name">Marco L.</div><div class="author-role">Elettricista, Milano</div></div></div></div>
+    <div class="testimonial"><div class="stars">★★★★★</div><p>"Il profilo Energy Manager è esattamente quello che mi serviva. Le label sono giuste, le voci corrispondono al mio lavoro. Non è un tool americano adattato male."</p><div class="testimonial-author"><div class="avatar">SR</div><div><div class="author-name">Sara R.</div><div class="author-role">Installatore Fotovoltaico, Bologna</div></div></div></div>
+    <div class="testimonial"><div class="stars">★★★★★</div><p>"Ho 8 tecnici in campo. Con il piano Team finalmente l'admin vede le ore di tutti e genera le fatture senza raccogliere i dati uno per uno."</p><div class="testimonial-author"><div class="avatar">GT</div><div><div class="author-name">Giovanni T.</div><div class="author-role">Titolare, Impresa Impiantistica, Torino</div></div></div></div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="center">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Domande <em>frequenti</em>.</h2>
+  </div>
+  <div class="faq-list">
+    <details><summary>GestiPro emette fatture elettroniche per lo SDI?</summary><p>Attualmente GestiPro genera fatture e preventivi in PDF professionali. La fatturazione elettronica SDI è in roadmap per il Q4 2026. Nel frattempo il PDF è valido per molte categorie — verifica con il tuo commercialista.</p></details>
+    <details><summary>I miei dati sono al sicuro? Chi può vederli?</summary><p>Nessuno tranne te. Ogni account è isolato (multi-tenant). Password hashate con bcrypt, sessioni httpOnly. Con il Self-Hosted i dati non escono mai dal tuo server. Siamo GDPR compliant.</p></details>
+    <details><summary>Posso usarlo da smartphone sul cantiere?</summary><p>Sì, GestiPro è responsive e funziona da qualsiasi browser mobile. La PWA installabile è in roadmap per Q2 2026.</p></details>
+    <details><summary>Posso cambiare piano in qualsiasi momento?</summary><p>Assolutamente sì. I tuoi dati rimangono intatti durante l'upgrade. Puoi anche passare all'annuale in qualsiasi momento per risparmiare fino al 31%.</p></details>
+    <details><summary>Il Self-Hosted funziona davvero con Docker?</summary><p>Sì. GestiPro include Docker Compose con app React, API Node.js, PostgreSQL e Nginx. Se hai Docker, sei operativo in pochi minuti.</p></details>
+    <details><summary>Esiste un programma referral per commercialisti?</summary><p>Sì. I commercialisti che portano clienti ricevono il 20% della revenue del primo anno. Contattaci per dettagli sul programma partner.</p></details>
+  </div>
+</section>
+
+<div class="cta-bottom">
+  <h2>Smetti di rincorrere i dati.<br><em>Inizia a fatturare meglio.</em></h2>
+  <p>Oltre 1,5 milioni di artigiani italiani lavorano ancora con carta ed Excel. Tu puoi fare meglio — da oggi, gratis.</p>
+  <div class="hero-actions">
+    <a href="#prezzi" class="btn-primary">⚡ Prova GestiPro Gratis</a>
+    <a href="#features" class="btn-ghost">Scopri tutte le funzioni</a>
+  </div>
+  <p class="hero-note" style="margin-top:1.2rem">✓ Nessuna carta di credito &nbsp;·&nbsp; ✓ Setup &lt;10 minuti &nbsp;·&nbsp; ✓ Cancellazione con un click</p>
+</div>
+
+<footer>
+  <div class="footer-logo">⚡ <span>GestiPro</span></div>
+  <div class="footer-links">
+    <a href="#features">Funzionalità</a>
+    <a href="#prezzi">Prezzi</a>
+    <a href="#faq">FAQ</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Termini di Servizio</a>
+    <a href="https://github.com/loreformi/app-clienti" target="_blank">GitHub</a>
+  </div>
+  <div class="footer-copy">© 2026 GestiPro · Made in Italy 🇮🇹<br><span style="font-size:.72rem">Lorenzo Formica</span></div>
+</footer>
+
+</body>
+</html>
